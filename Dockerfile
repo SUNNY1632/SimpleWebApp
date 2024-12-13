@@ -8,7 +8,7 @@ MAINTAINER "devopstools245@gmail.com"
 COPY ./webapp.war /usr/local/tomcat/webapps/
 
 # Expose the default Tomcat port
-EXPOSE 8080
+EXPOSE 8090
 
 # Start Tomcat server
 CMD ["catalina.sh", "run"]
