@@ -5,11 +5,10 @@
 
   <groupId>com.example.maven-project</groupId>
   <artifactId>maven-project</artifactId>
-  <packaging>jar</packaging> <!-- Change to war if needed -->
+  <packaging>war</packaging> <!-- Changed to war -->
   <version>1.0-SNAPSHOT</version>
-  <name>Maven Project</name>
-  <description>Sample Maven project with a working, deployable site.</description>
-  <url>http://www.example.com</url>
+  <name>Maven Web Project</name>
+  <description>Sample Maven web project deployable on Tomcat 9.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,79 +30,56 @@
         </configuration>
       </plugin>
 
-      <!-- Release Plugin -->
+      <!-- WAR Plugin -->
       <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
         <configuration>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
+      </plugin>
+
+      <!-- Surefire Plugin for Unit Testing -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
       </plugin>
     </plugins>
   </build>
 
-  <!-- Reporting section for plugins -->
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.1.2</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>3.2.0</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.3.1</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.14.0</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.22.2</version>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.5</version>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
-      </plugin>
-    </plugins>
-  </reporting>
-
   <dependencies>
+    <!-- Servlet API for Web Applications -->
     <dependency>
       <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
     </dependency>
 
+    <!-- JSP API for Web Applications -->
     <dependency>
       <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.2</version>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
     </dependency>
 
+    <!-- JUnit for Unit Testing -->
     <dependency>
       <groupId>junit</groupId>
-      <artifactId>junit-dep</artifactId>
-      <version>4.10</version>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <scm>
-    <connection>scm:git:git@github.com:jleetutorial/maven-project.git</connection>
-    <developerConnection>scm:git:git@github.com:jleetutorial/maven-project.git</developerConnection>
+    <connection>scm:git:https://github.com/SUNNY1632/SimpleWebApp.git</connection>
+    <developerConnection>scm:git:https://github.com/SUNNY1632/SimpleWebApp.git</developerConnection>
     <tag>HEAD</tag>
-    <url>http://github.com/jleetutorial/maven-project</url>
+    <url>https://github.com/SUNNY1632/SimpleWebApp</url>
   </scm>
 
   <prerequisites>
