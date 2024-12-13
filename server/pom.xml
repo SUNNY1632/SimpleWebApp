@@ -3,27 +3,40 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.example.maven-project</groupId>
-    <artifactId>maven-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+  <groupId>com.example</groupId>
+  <artifactId>simplewebapp</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
-  <artifactId>server</artifactId>
-  <packaging>war</packaging> <!-- Updated to war for web deployment -->
-  <name>Server</name>
-  <description>Logic for the server application.</description>
+  <name>SimpleWebApp</name>
+  <description>A simple web app for CI/CD.</description>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source> <!-- Java 11 -->
-    <maven.compiler.target>11</maven.compiler.target> <!-- Java 11 -->
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <build>
-    <finalName>${project.artifactId}</finalName>
+  <dependencies>
+    <!-- Servlet API -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
 
+    <!-- JUnit for Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>SimpleWebApp</finalName>
     <plugins>
       <!-- Compiler Plugin -->
       <plugin>
@@ -36,53 +49,13 @@
         </configuration>
       </plugin>
 
-      <!-- Tomcat Maven Plugin for deployment -->
+      <!-- WAR Plugin -->
       <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <url>http://localhost:8080/manager/text</url>
-          <server>TomcatServer</server>
-          <path>/server</path>
-          <username>admin</username> <!-- Replace with your Tomcat admin user -->
-          <password>password</password> <!-- Replace with your Tomcat admin password -->
-        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
       </plugin>
     </plugins>
   </build>
 
-  <dependencies>
-    <!-- Servlet API -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version> <!-- Compatible with Tomcat 9 -->
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- JUnit -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Hamcrest -->
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest</artifactId>
-      <version>2.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Mockito -->
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>4.11.0</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 </project>
