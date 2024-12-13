@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>Mobile offers website</title>
+    <title>Pen offers website</title>
     <style>
         * {
             margin: 0;
